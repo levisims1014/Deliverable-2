@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace Deliverable_Two
 {
@@ -10,79 +11,72 @@ namespace Deliverable_Two
     {
         static void Main(string[] args)
         {
-            String againResponse;
-            int activity, human;
-            Random rando = new Random();
-            bool again = true;
-
-            while (again)
+            string repeat;
+            bool mary = true;
+            do
             {
+                Console.WriteLine("Hello User! What are you in the mood for?");
+                Console.WriteLine("Here are your options!");
+                Console.WriteLine("1.) Action");
+                Console.WriteLine("2.) Chill Times");
+                Console.WriteLine("3.) Danger");
+                Console.WriteLine("4.) Good food");
+                Console.WriteLine("/n");
+                Console.WriteLine("What do you want to do?");
+                int fun = int.Parse(Console.ReadLine());
 
-                Console.WriteLine("Welcome to the What-to-Do App");
-                Console.WriteLine("Hello User, What Are you in the mood for?");
-                Console.WriteLine("1) Action");
-                Console.WriteLine("2) Chilling");
-                Console.WriteLine("3) Danger");
-                Console.WriteLine("4) Good Food");
-                Console.WriteLine("");
-                activity = Int32.Parse(Console.ReadLine());
-                if (activity == 6)
-                {
-                    activity = rando.Next(1, 6);
-                    Console.WriteLine("You chose random. Let me assist you!");
-                }
+                Console.WriteLine("Great! How many people are you bringing with you?");
+                int size = int.Parse(Console.ReadLine());
 
-                Console.WriteLine("How many will join you?");
-                human = Int32.Parse(Console.ReadLine());
-
-                switch (activity)
+                switch (fun)
                 {
                     case 1:
-                        Console.Write("If you want action, lets go stock car racing and");
+                        Console.Write("Okay if you’re in the mood for action, then you should go stock car racing and");
                         break;
                     case 2:
-                        Console.Write("If you want to chill, then you should go hicking and");
+                        Console.Write("Okay if you’re in the mood for chilling, then you should go hicking and");
                         break;
                     case 3:
-                        Console.Write("If you’re in the mood for danger, then you should go sky diving and");
+                        Console.Write("Okay if you’re in the mood for danger, then you should go sky diving and");
                         break;
                     case 4:
-                        Console.Write("If you want good food, then you should go to Taco Bell and");
+                        Console.Write("Okay if you’re in the mood for good food, then you should go to Taco Bell and");
                         break;
                 }
-
-                if (human == 0)
+                if (size == 0)
                 {
-                    Console.WriteLine(" travel by sneakers.");
+                    Console.WriteLine("travel in comfortable sneakers!");
                 }
-                else if (human > 0 && human < 5)
+                else if (size > 0 && size < 5)
                 {
-                    Console.WriteLine(" travel by sedan.");
+                    Console.WriteLine("travel in a nice sedan!");
                 }
-                else if (human > 4 && human < 11)
+                else if (size > 4 && size < 11)
                 {
-                    Console.WriteLine(" travel by VW Buss.");
+                    Console.WriteLine("travel in a Volkswagen Bus!");
+                }
+                else if (size > 11)
+                {
+                    Console.WriteLine("travel in a luxury airplaine!");
+                }
+                Console.WriteLine("Would you like to try something different? y or n?");
+                repeat = Console.ReadLine().ToLower();
+                if (repeat == "y")
+                {
+                    mary = true;
+                }
+                else if (repeat == "n")
+                {
+                    Console.WriteLine("Goodbye!");
+                    Console.ReadLine();
+                    mary = false;
                 }
                 else
                 {
-                    Console.WriteLine(" travel by charter buss.");
-                }
-
-                Console.WriteLine("Would you like to try again?");
-                Console.WriteLine("Type 'y' for Yes and 'n' for No");
-                againResponse = Console.ReadLine();
-
-                if (againResponse.Equals("y") || againResponse.Equals("Y"))
-                {
-                    again = true;
-                }
-                else
-                {
-                    again = false;
+                    Console.WriteLine("Invalid Input, Please try again!");
                 }
             }
-            Console.WriteLine("Thank you, Goodbye!");
-            Console.ReadLine();
+            while (mary);
         }
     }
 }
